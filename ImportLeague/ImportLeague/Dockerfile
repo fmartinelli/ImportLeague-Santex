@@ -8,15 +8,18 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
 COPY ["ImportLeague/ImportLeague.csproj", "ImportLeague/"]
+
+COPY "docker-compose.dcproj" "docker-compose.dcproj"
+
 RUN dotnet restore "ImportLeague/ImportLeague.csproj"
 COPY . .
 WORKDIR "/src/ImportLeague"
 RUN dotnet build "ImportLeague.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "ImportLeague.csproj" -c Release -o /app/publish
+RUN dotnet publish "ImportLeague.csproj" -c Release -o /app
 
 FROM base AS final
 WORKDIR /app
-COPY --from=publish /app/publish .
+COPY --from=publish /app .
 ENTRYPOINT ["dotnet", "ImportLeague.dll"]

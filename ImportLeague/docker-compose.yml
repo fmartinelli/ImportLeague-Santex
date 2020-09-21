@@ -1,0 +1,14 @@
+version: '3.4'
+
+services:
+
+  sqldata:
+    image: mcr.microsoft.com/mssql/server:2017-latest 
+
+  importleague-api:
+    image: ${REGISTRY:-fmartinelli}/importleague.api:${PLATFORM:-linux}-${TAG:-latest}
+    build:
+      context: .
+      dockerfile: ImportLeague/Dockerfile
+    depends_on:
+      - sqldata
