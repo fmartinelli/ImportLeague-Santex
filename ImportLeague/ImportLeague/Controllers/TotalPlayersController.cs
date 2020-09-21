@@ -19,13 +19,13 @@ namespace ImportLeague.Controllers
 
         private IMapper mapper;
         private ILeagueService leagueService;
-        private ILogger<ImportLeagueController> logger;
+        private ILogger<TotalPlayersController> logger;
 
         #endregion
 
         #region constructor
 
-        public TotalPlayersController(ILeagueService leagueService, IMapper mapper, ILogger<ImportLeagueController> logger)
+        public TotalPlayersController(ILeagueService leagueService, IMapper mapper, ILogger<TotalPlayersController> logger)
         {
             this.mapper = mapper;
             this.leagueService = leagueService;
