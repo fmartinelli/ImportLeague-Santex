@@ -65,8 +65,6 @@ The API responses for /import-league/{leagueCode} are:
 
 ### Build & Run
 
-Before build: replace the word "token" at the environment variable assignment line ("FootballServiceApiKey=token") with your football-data api token. You will find this line at "\<repository>\ImportLeague\docker-compose.override.yml".
-
 On Visual Studio with Docker Desktop installed:
  - Setup Docker Compose as default startup project
  - Run
